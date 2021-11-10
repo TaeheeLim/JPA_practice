@@ -26,9 +26,10 @@ public class Member {
     @JoinColumn(name = "TEAM_ID")
     private Team team;
 
-    public Member(){
-
-    }
+    //1:1 관계.. 다대일 연관관계와 유사하다
+    @OneToOne
+    @JoinColumn(name = "LOCKER_ID")
+    private Locker locker;
 
     public Long getId() {
         return id;
@@ -50,7 +51,15 @@ public class Member {
         return team;
     }
 
-    public void setTeam(Team team) {
+    public void setTeam(Team team){
         this.team = team;
+    }
+
+    public Locker getLocker() {
+        return locker;
+    }
+
+    public void setLocker(Locker locker) {
+        this.locker = locker;
     }
 }

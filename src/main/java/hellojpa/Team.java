@@ -9,14 +9,15 @@ public class Team {
     @Id @GeneratedValue
     @Column(name = "TEAM_ID")
     private Long id;
-
     private String name;
-    private String name2;
-    private String name3;
 
     @OneToMany(mappedBy = "team")
     private List<Member> members = new ArrayList<>();
 
+    public void addMember(Member member){
+        member.setTeam(this);
+        members.add(member);
+    }
     public Long getId() {
         return id;
     }
